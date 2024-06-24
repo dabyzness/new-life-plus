@@ -10,7 +10,7 @@ interface TodoListProps {
 export function TodoList({ todoList, completeTodo }: TodoListProps) {
   return (
     <div className="flex-col max-h-96 w-3/12 border-2 border-cyan-800 space-y-1">
-      {todoList.map((todo, index) => (
+      {todoList.map((todo) => (
         <TodoItem todo={todo} key={todo.id} completeTodo={completeTodo} />
       ))}
     </div>
