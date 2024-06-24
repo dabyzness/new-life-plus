@@ -1,8 +1,10 @@
 "use client";
 
+import React from "react";
 import { ButtonHTMLAttributes, useState } from "react";
 import { TodoList } from "../ui/todoList";
 import { Todo } from "../lib/definitions";
+import Link from "next/link";
 
 const todoListDaily: Todo[] = [
   { id: "1", title: "Peepee poopoo", status: "pending" },
@@ -79,6 +81,7 @@ export default function Page() {
     return true;
   }
 
+  // REFACTOR: button classNames need to be slurped up into one style.
   return (
     <div>
       <div className="inline-flex w-3/12 ">
@@ -126,6 +129,7 @@ export default function Page() {
         </button>
       </div>
       <TodoList todoList={listSelected} completeTodo={completeTodo} />
+      <Link href="/dashboard/createTask"> CREATE TASK </Link>
     </div>
   );
 }
