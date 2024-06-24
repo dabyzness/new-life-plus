@@ -6,21 +6,21 @@ import { TodoList } from "../ui/todoList";
 import { Todo } from "../lib/definitions";
 import Link from "next/link";
 
-const todoListDaily: Todo[] = [
+export const todoListDaily: Todo[] = [
   { id: "1", title: "Peepee poopoo", status: "pending" },
   { id: "2", title: "Swagdaddy", status: "complete" },
   { id: "3", title: "Drinking mudwtr", status: "pending" },
   { id: "4", title: "Eating his shoes", status: "pending" },
 ];
 
-const todoListWeekly: Todo[] = [
+export const todoListWeekly: Todo[] = [
   { id: "5", title: "abba", status: "pending" },
   { id: "6", title: "babbaa", status: "complete" },
   { id: "7", title: "stabba", status: "complete" },
   { id: "8", title: "plebba", status: "pending" },
 ];
 
-const todoListMonthly: Todo[] = [
+export const todoListMonthly: Todo[] = [
   { id: "9", title: "stagnate", status: "pending" },
   { id: "10", title: "floodgate", status: "complete" },
   { id: "11", title: "jew hate", status: "pending" },

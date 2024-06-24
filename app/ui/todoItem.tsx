@@ -2,6 +2,7 @@ import React from "react";
 import { TodoCompleteButton } from "./todoCompleteButton";
 import { Todo } from "../lib/definitions";
 import { TodoPendingButton } from "./todoPendingButton";
+import Link from "next/link";
 
 interface TodoItemProps {
   todo: Todo;
@@ -20,6 +21,8 @@ export function TodoItem({ todo, completeTodo }: TodoItemProps) {
       ) : (
         <TodoPendingButton id={todo.id} completeTodo={completeTodo} />
       )}
+
+      <Link href={`/dashboard/editTask/${todo.id}`}>EDIT</Link>
     </div>
   );
 }
