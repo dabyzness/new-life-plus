@@ -2,30 +2,31 @@
 
 import { ButtonHTMLAttributes, useState } from "react";
 import { TodoList } from "../ui/todoList";
+import { Todo } from "../lib/definitions";
 
-const todoListDaily = [
-  { name: "Peepee poopoo", isComplete: false },
-  { name: "Swagdaddy", isComplete: true },
-  { name: "Drinking mudwtr", isComplete: false },
-  { name: "Eating his shoes", isComplete: false },
+const todoListDaily: Todo[] = [
+  { id: "1", title: "Peepee poopoo", status: "pending" },
+  { id: "2", title: "Swagdaddy", status: "complete" },
+  { id: "3", title: "Drinking mudwtr", status: "pending" },
+  { id: "4", title: "Eating his shoes", status: "pending" },
 ];
 
-const todoListWeekly = [
-  { name: "abba", isComplete: false },
-  { name: "babbaa", isComplete: true },
-  { name: "stabba", isComplete: true },
-  { name: "plebba", isComplete: false },
+const todoListWeekly: Todo[] = [
+  { id: "5", title: "abba", status: "pending" },
+  { id: "6", title: "babbaa", status: "complete" },
+  { id: "7", title: "stabba", status: "complete" },
+  { id: "8", title: "plebba", status: "pending" },
 ];
 
-const todoListMonthly = [
-  { name: "stagnate", isComplete: false },
-  { name: "floodgate", isComplete: true },
-  { name: "jew hate", isComplete: false },
-  { name: "pee date", isComplete: true },
+const todoListMonthly: Todo[] = [
+  { id: "9", title: "stagnate", status: "pending" },
+  { id: "10", title: "floodgate", status: "complete" },
+  { id: "11", title: "jew hate", status: "pending" },
+  { id: "12", title: "pee date", status: "complete" },
 ];
 
 export default function Page() {
-  const [listSelected, setListSelected] = useState(todoListDaily);
+  const [listSelected, setListSelected] = useState<Todo[]>(todoListDaily);
 
   function onChange(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
@@ -45,11 +46,12 @@ export default function Page() {
     }
   }
 
-  function onComplete(name: string) {
-    const foundTodo = listSelected.find((todo) => todo.name === name);
+  // TODO: Persist change in database
+  function completeTodo(id: string) {
+    const foundTodo = listSelected.find((todo) => todo.id === id);
     if (foundTodo) {
-      foundTodo.isComplete = true;
-      setListSelected([...listSelected, foundTodo]);
+      foundTodo.status = "complete";
+      setListSelected([...listSelected]);
     }
   }
 
@@ -75,7 +77,7 @@ export default function Page() {
           Monthly
         </button>
       </div>
-      <TodoList todoList={listSelected} onComplete={onComplete} />
+      <TodoList todoList={listSelected} completeTodo={completeTodo} />
     </div>
   );
 }

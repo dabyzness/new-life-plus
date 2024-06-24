@@ -1,25 +1,25 @@
 import React from "react";
-import { CheckBox } from "./checkbox";
+import { TodoCompleteButton } from "./todoCompleteButton";
+import { Todo } from "../lib/definitions";
+import { TodoPendingButton } from "./todoPendingButton";
 
 interface TodoItemProps {
-  isComplete: boolean;
-  name: string;
-  onComplete: (name: string) => void;
+  todo: Todo;
+  completeTodo: (id: string) => void;
 }
 
-export function TodoItem({ name, isComplete, onComplete }: TodoItemProps) {
-  console.log(name, isComplete);
-
-  function onCheck(event: React.ChangeEventHandler<HTMLInputElement>) {
-    console.log(event);
-
-    onComplete(name);
-  }
-
+export function TodoItem({ todo, completeTodo }: TodoItemProps) {
   return (
-    <div className="flex w-full h-6 justify-between">
-      <div className={`${isComplete ? "line-through" : ""}`}>{name}</div>
-      <CheckBox isComplete={isComplete} onCheck={onCheck} />
+    <div className="flex w-full justify-between">
+      <div className={`${todo.status === "complete" ? "line-through" : ""}`}>
+        {todo.title}
+      </div>
+
+      {todo.status === "complete" ? (
+        <TodoCompleteButton />
+      ) : (
+        <TodoPendingButton id={todo.id} completeTodo={completeTodo} />
+      )}
     </div>
   );
 }
