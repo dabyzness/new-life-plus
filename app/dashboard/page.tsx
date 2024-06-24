@@ -23,7 +23,7 @@ export const todoListWeekly: Todo[] = [
 export const todoListMonthly: Todo[] = [
   { id: "9", title: "stagnate", status: "pending" },
   { id: "10", title: "floodgate", status: "complete" },
-  { id: "11", title: "jew hate", status: "pending" },
+  { id: "11", title: "good state", status: "pending" },
   { id: "12", title: "pee date", status: "complete" },
 ];
 
